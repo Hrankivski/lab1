@@ -1,0 +1,145 @@
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Fuel mass calculator</title>
+   <style>.field{width:180px;}</style>
+</head>
+<style>
+   .btn {
+    margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #000;
+        color: #000;
+        cursor: pointer;
+   }
+
+   .btn:hover {
+        background-color: rgb(160, 160, 160);
+   }
+
+   .block {
+        width: 700px;
+        border: 1px solid #000;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 10px;
+   }
+
+   .block_item {
+        min-height: 70px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #000;
+   }
+
+   .block_input {
+    height: 30px;
+    text-align: center;
+   }
+
+   .result {
+    margin-top: 10px;
+    font-size: 24px;
+   }
+</style>
+<body>
+    <h1>Fuel mass calculator</h1>
+    <h2>Введіть склад робочої маси палива</h2>
+   
+    <div class="block">
+        <div class="block_item">
+            <div class="text">Hp%</div>
+            <input class="block_input" value="1.9" type="number" id="hr">
+        </div>
+        <div class="block_item">
+            <div class="text">Cp%</div>
+            <input class="block_input" type="number" value="21.1" id="cr">
+        </div>
+        <div class="block_item">
+            <div class="text">Sp%</div>
+            <input class="block_input" type="number" value="2.6" id="sr">
+        </div>
+        <div class="block_item">
+            <div class="text">Np%</div>
+            <input class="block_input" type="number" value="0.2" id="nr">
+        </div>
+        <div class="block_item">
+            <div class="text">Op%</div>
+            <input class="block_input" type="number" value="7.1" id="or">
+        </div>
+        <div class="block_item">
+            <div class="text">Wp%</div>
+            <input class="block_input" type="number" value="53" id="wr">
+        </div>
+        <div class="block_item">
+            <div class="text">Ap%</div>
+            <input class="block_input" type="number" value="14.1" id="ar">
+        </div>
+
+        <div class="result" id="result"></div>
+
+        <button class="btn" id="btn">Calculate</button>
+    </div>
+
+    <a href="/"><button>Home page</button></a>
+
+    
+    <script>
+        const btn = document.getElementById('btn');
+        btn.addEventListener('click', () => {
+        const hr = document.getElementById('hr').value;
+        const cr = document.getElementById('cr').value;
+        const nr = document.getElementById('nr').value;
+        const or = document.getElementById('or').value;
+        const wr = document.getElementById('wr').value;
+        const ar = document.getElementById('ar').value;
+        
+        const result = document.getElementById('result');
+        result.innerText = `${hr.toFixed(3)}, ${cr.toFixed(3)}${nr.toFixed(3)}, ${or.toFixed(3)}, ${wr.toFixed(3)}, ${ar.toFixed(3)}\n`;
+
+        kd = 100/(100-wr);
+        kf = 100/(100-wr-ar);
+
+        console.log('1', hr);
+        let hd = hr*kd;
+        let cd = cr*kd;
+        let sd = sr*kd;
+        let nd = nr*kd;
+        let od = or*kd;
+        let wd = wr*kd;
+        let ad = ar*kd;
+
+        let hf = hr*kf;
+        let cf = cr*kf;
+        let sf = sr*kf;
+        let nf = nr*kf;
+        let of = or*kf;
+        let wf = wr*kf;
+        let af = ar*kf;
+        })
+            const result = document.getElementById('result');
+            result.innerText = `Суха маса:\n
+            Hс%:${hd.toFixed(3)}\n
+            Cс%:${cd.toFixed(3)}\n
+            Sс%:${sd.toFixed(3)}\n
+            Nс%:${nd.toFixed(3)}\n
+            Oс%:${od.toFixed(3)}\n
+            Wс%:${wd.toFixed(3)}\n
+            Aс%:${ad.toFixed(3)}\n\n
+            Горюча маса:\n
+            Hг%:${hf.toFixed(3)}\n
+            Cг%:${cf.toFixed(3)}\n
+            Sг%:${sf.toFixed(3)}\n
+            Nг%:${nf.toFixed(3)}\n
+            Oг%:${of.toFixed(3)}\n
+            Wг%:${wf.toFixed(3)}\n
+            Aг%:${af.toFixed(3)}`;
+         
+    </script>
+</body>
+<html>
