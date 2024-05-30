@@ -92,37 +92,35 @@
     <script>
         const btn = document.getElementById('btn');
         btn.addEventListener('click', () => {
-        const hr = document.getElementById('hr').value;
-        const cr = document.getElementById('cr').value;
-        const nr = document.getElementById('nr').value;
-        const or = document.getElementById('or').value;
-        const wr = document.getElementById('wr').value;
-        const ar = document.getElementById('ar').value;
-        
-        const result = document.getElementById('result');
-        result.innerText = `${hr.toFixed(3)}, ${cr.toFixed(3)}${nr.toFixed(3)}, ${or.toFixed(3)}, ${wr.toFixed(3)}, ${ar.toFixed(3)}\n`;
+            const hr = Number(document.getElementById('hr').value);
+            const cr = Number(document.getElementById('cr').value);
+            const sr = Number(document.getElementById('sr').value);
+            const nr = Number(document.getElementById('nr').value);
+            const or = Number(document.getElementById('or').value);
+            const wr = Number(document.getElementById('wr').value);
+            const ar = Number(document.getElementById('ar').value);
 
-        kd = 100/(100-wr);
-        kf = 100/(100-wr-ar);
-
-        console.log('1', hr);
-        let hd = hr*kd;
-        let cd = cr*kd;
-        let sd = sr*kd;
-        let nd = nr*kd;
-        let od = or*kd;
-        let wd = wr*kd;
-        let ad = ar*kd;
-
-        let hf = hr*kf;
-        let cf = cr*kf;
-        let sf = sr*kf;
-        let nf = nr*kf;
-        let of = or*kf;
-        let wf = wr*kf;
-        let af = ar*kf;
-        })
             const result = document.getElementById('result');
+
+            let kd = 100/(100-wr);
+            let kf = 100/(100-wr-ar);
+
+            let hd = hr*kd;
+            let cd = cr*kd;
+            let sd = sr*kd;
+            let nd = nr*kd;
+            let od = or*kd;
+            let wd = wr*kd;
+            let ad = ar*kd;
+
+            let hf = hr*kf;
+            let cf = cr*kf;
+            let sf = sr*kf;
+            let nf = nr*kf;
+            let of = or*kf;
+            let wf = wr*kf;
+            let af = ar*kf;
+
             result.innerText = `Суха маса:\n
             Hс%:${hd.toFixed(3)}\n
             Cс%:${cd.toFixed(3)}\n
@@ -138,8 +136,10 @@
             Nг%:${nf.toFixed(3)}\n
             Oг%:${of.toFixed(3)}\n
             Wг%:${wf.toFixed(3)}\n
-            Aг%:${af.toFixed(3)}`;
-         
+            Aг%:${af.toFixed(3)}`; 
+        })
+
+        
     </script>
 </body>
 <html>
